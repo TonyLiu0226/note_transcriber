@@ -2,24 +2,8 @@
 from binascii import a2b_base64
 import board
 import pwmio
-from digitalio import DigitalInOut
-import simpleio
-from audiocore import RawSample
 from adafruit_motor import servo
 
-# imports for LCD display
-import terminalio
-import displayio
-from adafruit_display_text import label
-from adafruit_st7735r import ST7735R
-
-# import for setting up the keypad
-import adafruit_matrixkeypad
-
-#additional imports 
-import math
-import array
-import random
 import time
 
 #defines pins for each leg, foot and the speaker
@@ -48,8 +32,8 @@ class PageTurner:
     def loop(self):
         while True:
             print("spin")
-            self.w.throttle = 1.0
-            time.sleep(0.5)
+            self.w.throttle = 0.5
+            time.sleep(1)
             print("stop spin")
             self.w.throttle = 0.0
             time.sleep(1.0)
@@ -68,3 +52,4 @@ class PageTurner:
 
 if __name__ == "__main__":
     movement = PageTurner()
+    movement.loop()
