@@ -46,29 +46,30 @@ class PageTurner:
         time.sleep(1)
 
     def loop(self):
-        for angle in range(0,60,2.5):
-            movement.s.angle = 30 + angle
-            movement.e.angle = 120 - angle
-            time.sleep(0.05)
+        while true:
+            self.w.throttle = 1.0
+            time.sleep(1)
+            self.w.throttle = 0.0
+            for angle in range(0,60,3): #must be integer
+                movement.s.angle = 30 + angle
+                movement.e.angle = 120 - angle
+                time.sleep(0.05)
 
-        #for angle in range(0,60,2.5):
-        #    movement.e.angle = 60 - angle
-        #    time.sleep(0.05)
-        #for angle in range(60,0,-2.5):
-        #    movement.e.angle = 60 - angle
-        #    time.sleep(0.05)
+            for angle in range(0,60,3):
+                movement.e.angle = 60 + angle
+                time.sleep(0.05)
+            for angle in range(60,0,-3):
+                movement.e.angle = 60 + angle
+                time.sleep(0.05)
 
-        #for angle in range(60,0,-2.5):
-        #    movement.s.angle = 30 + angle
-        #    movement.e.angle = 120 - angle
-        #    time.sleep(0.05)
+            for angle in range(60,0,-3):
+                movement.s.angle = 30 + angle
+                movement.e.angle = 120 - angle
+                time.sleep(0.05)
 
 
 
 
 if __name__ == "__main__":
     movement = PageTurner()
-    #movement.loop()
-
-
-
+    movement.loop()
