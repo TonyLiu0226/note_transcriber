@@ -86,3 +86,9 @@ export default function App(props) {
     
   )
 }
+
+
+/*need to :
+- display preview of scanned pages and offer download option
+
+*/

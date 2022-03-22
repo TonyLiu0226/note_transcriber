@@ -2,8 +2,24 @@
 from binascii import a2b_base64
 import board
 import pwmio
+from digitalio import DigitalInOut
+import simpleio
+from audiocore import RawSample
 from adafruit_motor import servo
 
+# imports for LCD display
+import terminalio
+import displayio
+from adafruit_display_text import label
+from adafruit_st7735r import ST7735R
+
+# import for setting up the keypad
+import adafruit_matrixkeypad
+
+#additional imports
+import math
+import array
+import random
 import time
 
 #defines pins for each leg, foot and the speaker
@@ -25,31 +41,34 @@ class PageTurner:
         self.w = servo.ContinuousServo(pwmW)
 
         # reset the angles for each servo
-        self.e.angle = 90
-        self.s.angle = 90
+        self.s.angle = 30
+        self.e.angle = 120
         time.sleep(1)
 
     def loop(self):
-        while True:
-            print("spin")
-            self.w.throttle = 0.5
-            time.sleep(1)
-            print("stop spin")
-            self.w.throttle = 0.0
-            time.sleep(1.0)
-            print("move shoulder")
-            self.s.angle = 180
-            time.sleep(2.0)
-            print("move elbow")
-            self.e.angle = 140
-            time.sleep(1.0)
-            self.e.angle = 90
-            time.sleep(1.0)
-            self.s.angle = 90
-            time.sleep(1.0)
+        for angle in range(0,60,2.5):
+            movement.s.angle = 30 + angle
+            movement.e.angle = 120 - angle
+            time.sleep(0.05)
+
+        #for angle in range(0,60,2.5):
+        #    movement.e.angle = 60 - angle
+        #    time.sleep(0.05)
+        #for angle in range(60,0,-2.5):
+        #    movement.e.angle = 60 - angle
+        #    time.sleep(0.05)
+
+        #for angle in range(60,0,-2.5):
+        #    movement.s.angle = 30 + angle
+        #    movement.e.angle = 120 - angle
+        #    time.sleep(0.05)
+
 
 
 
 if __name__ == "__main__":
     movement = PageTurner()
-    movement.loop()
+    #movement.loop()
+
+
+
