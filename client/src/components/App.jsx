@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { FormControl, Button, TextField, AppBar, Toolbar } from 'react-bootstrap';
 import Counter from './Counter';
+
 import './Form.css';
 import { useEffect } from "react";
 
@@ -64,8 +65,8 @@ export default function App(props) {
 //     }
 //   }
 return (
-  
-  <div className="auth-form">
+  <>
+  {/* <div className="auth-form">
   <form className="">
     <FormControl fullWidth={true}>
     <Button
@@ -100,10 +101,11 @@ return (
       
     </FormControl>
     
-  </form>
+  </form> */}
   <div>
-      <Counter></Counter>
-    </div>
+    <Counter></Counter>
   </div>
+  {/* </div> */}
+  </>
 )
 }
