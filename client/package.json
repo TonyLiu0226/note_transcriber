@@ -1,5 +1,6 @@
 {
   "name": "client",
+  "homepage": "http://cpen291-11.ece.ubc.ca/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
