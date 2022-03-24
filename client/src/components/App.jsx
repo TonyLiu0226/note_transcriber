@@ -1,33 +1,23 @@
 import React, { useState } from "react";
-import { FormControl, Button, TextField } from '@mui/material';
+import { FormControl, Button, TextField, AppBar, Toolbar } from 'react-bootstrap';
+import Counter from './Counter';
 import './Form.css';
 import { useEffect } from "react";
 
 
 
-function sayHello(){
-  return <div>
-    <h1>"hello"</h1>
-  </div>
-  
-}
-
-function Counter() {
-  const [count, setCount] = useState(0)
-  var text = document.getElementById("bruv");
-  useEffect(() => {
-    document.title = `${count} clicks`
-  }, [count])
-  return <div>
-    <p1>{count}</p1>
-    <button onClick={() => setCount(count + 1) }>
-        Click me lol
-        
-      </button>
-  </div>
-}
-
 export default function App(props) {
+  
+  function sayHello(){
+    return <div>
+      <h1>"hello"</h1>
+    </div>
+    
+  }
+
+  
+
+
   const [isAuto,setIsAuto] = useState(false);
 
   const toggleAuto = (e) => {
@@ -117,7 +107,3 @@ return (
   </div>
 )
 }
-/*need to :
-- display preview of scanned pages and offer download option
-
-*/
