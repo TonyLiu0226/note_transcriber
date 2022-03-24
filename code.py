@@ -7,15 +7,6 @@ import simpleio
 from audiocore import RawSample
 from adafruit_motor import servo
 
-# imports for LCD display
-import terminalio
-import displayio
-from adafruit_display_text import label
-from adafruit_st7735r import ST7735R
-
-# import for setting up the keypad
-import adafruit_matrixkeypad
-
 #additional imports
 import math
 import array
@@ -41,8 +32,8 @@ class PageTurner:
         self.w = servo.ContinuousServo(pwmW)
 
         # reset the angles for each servo
-        self.s.angle = 30
-        self.e.angle = 120
+        self.s.angle = 10
+        self.e.angle = 90 
         time.sleep(1)
 
     def loop(self):
@@ -51,19 +42,19 @@ class PageTurner:
             self.w.throttle = 1.0
             time.sleep(1)
             self.w.throttle = 0.0
-            for angle in range(0,60,1): #must be integer
+            for angle in range(0,90,1): #must be integer
                 movement.s.angle = 10 + angle
                 movement.e.angle = 90 - angle
                 time.sleep(sleepTime)
 
             for angle in range(0,100,1):
-                movement.e.angle = 30 + angle
+                movement.e.angle = 0 + angle
                 time.sleep(sleepTime)
             for angle in range(100,0,-1):
-                movement.e.angle = 30 + angle
+                movement.e.angle = 0 + angle
                 time.sleep(sleepTime)
 
-            for angle in range(60,0,-1):
+            for angle in range(90,0,-1):
                 movement.s.angle = 10 + angle
                 movement.e.angle = 90 - angle
                 time.sleep(sleepTime)
