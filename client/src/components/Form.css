@@ -1,6 +1,10 @@
-form {
-    
+.container{
+    align-self: center;
     width:50%;
-    margin:auto;
-    margin-top: 10%;
+    margin-left:25%;
+}
+
+h2 {
+    font-size:30px;
+    color: green;
 }

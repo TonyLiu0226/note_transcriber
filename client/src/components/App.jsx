@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FormControl, Button, TextField, AppBar, Toolbar } from 'react-bootstrap';
+import { Button, ButtonGroup, TextField, AppBar, Toolbar } from 'react-bootstrap';
 import Counter from './Counter';
 
 import './Form.css';
@@ -66,46 +66,23 @@ export default function App(props) {
 //   }
 return (
   <>
-  {/* <div className="auth-form">
-  <form className="">
-    <FormControl fullWidth={true}>
-    <Button
-      variant="contained"
-      component="label"
-      color="secondary"
-      >
-      <input
-          type="file"
-      />
-      </Button>
-      {!isAuto &&
-      <Button 
-        type="submit" 
-        variant="contained"
-        onClick={sayHello} 
-        sx={{my:1}}>Flip Page
-      </Button>
-  }
-      <Button 
-        type="submit" 
-        variant="contained" 
-        sx={{my:1}}
-        onClick={toggleAuto}
-      >Auto
-      </Button>
-      <Button 
-        type="submit" 
-        variant="contained" 
-        sx={{my:1}}>Submit
-      </Button>
-      
-    </FormControl>
-    
-  </form> */}
+  {<div className="auth-form">
+  <div class="container">
+  <h2>Actions</h2>
+  <form action="/action_page.php">
+    <div class="form-group">
+      <button type="submit" class="btn btn-default">Take Photo</button>
+    </div>
+    <div class="form-group">
+      <button type="submit" class="btn btn-default">Flip page</button>
+    </div>
+    <button type="submit" class="btn btn-default">Submit</button>
+  </form>
+</div>
   <div>
     <Counter></Counter>
   </div>
-  {/* </div> */}
+  </div>}
   </>
 )
 }
