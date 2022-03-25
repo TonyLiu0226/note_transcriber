@@ -1,10 +1,46 @@
 .container{
     align-self: center;
-    width:50%;
-    margin-left:25%;
+    width:80%;
+    margin-left:10%;
 }
 
 h2 {
     font-size:30px;
     color: green;
+    text-align:center;
+}
+
+h1 {
+    font-size:50px;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+}
+
+h4 {
+    font-size:15px;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+}
+
+.btn {
+    font-size: 20px;
+    color: red;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: green;
+  }
+
+#bb {
+    background:url(download.jpg) no-repeat;
+    width:100px;
+    height:100px;
+}
+
+#top {
+    display:flex;
+}
+
+.main {
+    display: flex;
+    justify-content: space-evenly;
 }

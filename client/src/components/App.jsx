@@ -69,14 +69,15 @@ return (
   {<div className="auth-form">
   <div class="container">
   <h2>Actions</h2>
-  <form action="/action_page.php">
+  <br></br>
+  <form class="main" action="/action_page.php">
     <div class="form-group">
-      <button type="submit" class="btn btn-default">Take Photo</button>
+      <button type="submit" class="btn btn-default btn-lg" id="bt">Take Photo</button>
     </div>
     <div class="form-group">
-      <button type="submit" class="btn btn-default">Flip page</button>
+      <button type="submit" class="btn btn-default btn-lg" id="bt">Flip page</button>
     </div>
-    <button type="submit" class="btn btn-default">Submit</button>
+    <button type="submit" class="btn btn-default btn-lg" id="bt">Submit</button>
   </form>
 </div>
   <div>
