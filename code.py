@@ -19,6 +19,8 @@ shoulderPin = board.D5
 wheelPin = board.D2
 
 class PageTurner:
+    offsetStartS = 10
+    offsetStartE = 90
     def __init__(self):
         """ constructor for Movement class, initializes the servo objects"""
         # define PWMOut objects
@@ -26,39 +28,46 @@ class PageTurner:
         pwmS = pwmio.PWMOut(shoulderPin, duty_cycle=2 ** 15, frequency=50)
         pwmW = pwmio.PWMOut(wheelPin, frequency=50)
 
-        # define servo objects
+        # define servo objects 
         self.e = servo.Servo(pwmE)
         self.s = servo.Servo(pwmS)
         self.w = servo.ContinuousServo(pwmW)
 
         # reset the angles for each servo
-        self.s.angle = 10
-        self.e.angle = 90 
+        self.s.angle = self.offsetStartS
+        self.e.angle = self.offsetStartE
         time.sleep(1)
 
     def loop(self):
-        sleepTime = 0.005
         while True:
-            self.w.throttle = 1.0
-            time.sleep(1)
-            self.w.throttle = 0.0
-            for angle in range(0,90,1): #must be integer
-                movement.s.angle = 10 + angle
-                movement.e.angle = 90 - angle
-                time.sleep(sleepTime)
+            self.turnPage()
+                
+            
 
-            for angle in range(0,100,1):
-                movement.e.angle = 0 + angle
-                time.sleep(sleepTime)
-            for angle in range(100,0,-1):
-                movement.e.angle = 0 + angle
-                time.sleep(sleepTime)
+    def turnPage(self):
+        sleepTime = 0.005
+        
+        self.w.throttle = 1.0
+        time.sleep(1)
+        self.w.throttle = 0.0
+         
+        for angle in range(0,90,1): #must be integer
+            self.s.angle = self.offsetStartS + angle
+            self.e.angle = self.offsetStartE - angle
+            time.sleep(sleepTime)
 
-            for angle in range(90,0,-1):
-                movement.s.angle = 10 + angle
-                movement.e.angle = 90 - angle
-                time.sleep(sleepTime)
-
+        for angle in range(0,100,1):
+            self.e.angle = 0 + angle
+            time.sleep(sleepTime)
+        for angle in range(0,40,1):
+            self.e.angle = 100 + angle
+            time.sleep(sleepTime)
+        for angle in range(90,0,-1):
+            self.s.angle = self.offsetStartS + angle
+            time.sleep(sleepTime)
+        for angle in range(50,0,-1):
+            self.e.angle = self.offsetStartE + angle
+            time.sleep(sleepTime)
 
 
 
