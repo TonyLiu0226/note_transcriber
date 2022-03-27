@@ -19,8 +19,8 @@ shoulderPin = board.D5
 wheelPin = board.D2
 
 class PageTurner:
-    offsetStartS = 10
-    offsetStartE = 90
+    offsetStartS = 0 #reset the shoulder's 0 at -120 degrees
+    offsetStartE = 180
     def __init__(self):
         """ constructor for Movement class, initializes the servo objects"""
         # define PWMOut objects
@@ -47,26 +47,23 @@ class PageTurner:
     def turnPage(self):
         sleepTime = 0.005
         
-        self.w.throttle = 1.0
-        time.sleep(1)
+        self.w.throttle = 0.2
+        time.sleep(0.7)
         self.w.throttle = 0.0
          
-        for angle in range(0,90,1): #must be integer
+        for angle in range(0,120,1): #must be integer
             self.s.angle = self.offsetStartS + angle
             self.e.angle = self.offsetStartE - angle
             time.sleep(sleepTime)
 
         for angle in range(0,100,1):
-            self.e.angle = 0 + angle
+            self.e.angle = 60 + angle
             time.sleep(sleepTime)
-        for angle in range(0,40,1):
-            self.e.angle = 100 + angle
+        for angle in range(0,20,1):
+            self.e.angle = 160 + angle
             time.sleep(sleepTime)
-        for angle in range(90,0,-1):
+        for angle in range(120,0,-1):
             self.s.angle = self.offsetStartS + angle
-            time.sleep(sleepTime)
-        for angle in range(50,0,-1):
-            self.e.angle = self.offsetStartE + angle
             time.sleep(sleepTime)
 
 
