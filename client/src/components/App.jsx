@@ -1,29 +1,20 @@
 import React, { useState } from "react";
 import { Button, ButtonGroup, TextField, AppBar, Toolbar } from 'react-bootstrap';
 import Counter from './Counter';
-
+ 
 import './Form.css';
 import { useEffect } from "react";
-
-
-
+ 
+ 
+ 
 export default function App(props) {
-  
-  function sayHello(){
-    return <div>
-      <h1>"hello"</h1>
-    </div>
-    
-  }
-
-  
-
-
+ 
+ 
   const [isAuto,setIsAuto] = useState(false);
-
+ 
   const toggleAuto = (e) => {
       e.preventDefault();
-      
+     
       setIsAuto(prev => !prev);
   }
 //   const {setToken, isLogin} = props;
@@ -33,7 +24,7 @@ export default function App(props) {
 //     confirmPassword: "",
 //     notes: []
 //   });
-
+ 
 //   function handleChange(event) {
 //     const { name, value } = event.target;
 //     setUserInfo((prev) => {
@@ -43,7 +34,7 @@ export default function App(props) {
 //       }
 //     });
 //   }
-
+ 
 //   function submit(e) {
 //     e.preventDefault();
 //     if (props.isLogin) {
@@ -70,9 +61,12 @@ return (
   <div class="container">
   <h2>Actions</h2>
   <br></br>
-  <form class="main" action="/action_page.php">
+  <form class="main" action="/action_page.php" method="post">
     <div class="form-group">
-      <button type="submit" class="btn btn-default btn-lg" id="bt">Take Photo</button>
+     
+        <button variant="contained" class="btn btn-default btn-lg" component="span" id="bt">TAKE PHOTO
+        <input type="file" accept="image/*" id="file_uploader"/>
+        </button>
     </div>
     <div class="form-group">
       <button type="submit" class="btn btn-default btn-lg" id="bt">Flip page</button>
@@ -87,3 +81,5 @@ return (
   </>
 )
 }
+ 
+
