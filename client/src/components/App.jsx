@@ -4,6 +4,8 @@ import Counter from './Counter';
 import axios from 'axios'; 
 import './Form.css';
 import { useEffect } from "react";
+import ImageList from "./ImageList";
+import { CssBaseline } from '@mui/material'
  
 
 export default function App(props) {
@@ -14,6 +16,7 @@ export default function App(props) {
   //     setIsAuto(prev => !prev);
   // }
   const [imageFile, setImageFile] = useState('');
+  const [uploadInput,setUploadInput] = useState();
   const [data,setData] = useState(new FormData());
   useEffect(()=> {
     getPhoto = getPhoto.bind()
@@ -32,7 +35,10 @@ export default function App(props) {
 
   function getPhoto(e) {
     e.preventDefault();
-    setData(prev => 'image', this.uploadInput.files[0]);
+    setData(prev => [
+      ...prev,
+      uploadInput.files[0]
+    ]);
     axios({
       method: "post",
       url: "http://127.0.0.1:5000/login",
@@ -52,6 +58,8 @@ export default function App(props) {
   }
 return (
   <>
+  <CssBaseline />
+  <ImageList />
   <div className="auth-form">
     <div className="container">
       <h2>Actions</h2>
@@ -60,7 +68,7 @@ return (
         <div className="form-group">
         
             <button variant="contained" className="btn btn-default btn-lg" component="span" id="bt">TAKE PHOTO
-            <input ref={(ref) => {this.uploadInput = ref; }} type="file" />
+            <input ref={(ref) => setUploadInput(ref)} type="file" />
             </button>
         </div>
         <div className="form-group">
