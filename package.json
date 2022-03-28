@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/CPEN-291/P2_B_G11/issues"
   },
-  "homepage": "https://github.com/CPEN-291/P2_B_G11#readme"
+  "homepage": "https://github.com/CPEN-291/P2_B_G11#readme",
+  "dependencies": {
+    "axios": "^0.26.1"
+  }
 }
