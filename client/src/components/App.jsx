@@ -22,7 +22,6 @@ export default function App(props) {
     getPhoto = getPhoto.bind()
     },[]);
 
-
  
   function flipPage(e) {
     e.preventDefault();
@@ -42,7 +41,7 @@ export default function App(props) {
     axios({
       method: "post",
       url: "http://127.0.0.1:5000/login",
-      data: data
+      data: data,
     })
       .then(function (response) {
         //handle success

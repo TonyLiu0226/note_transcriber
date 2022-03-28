@@ -1,6 +1,6 @@
 from flask import Flask, flash, request, session
 import os.path
-from flask_cors import CORS
+from flask_cors import CORS, cross_origin
 import logging
 
 logging.basicConfig(level=logging.INFO)
@@ -12,7 +12,8 @@ ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-CORS(app)
+cors = CORS(app, resources={r"/*": {"origins": "*"}})
+app.config['CORS_HEADERS'] = 'Content-Type'
 
 
 
@@ -29,19 +30,21 @@ def run_script():
         file.close()
     return "turning page..."
 
-@app.route('/login')
+@app.route('/login', methods=['POST'])
+@cross_origin()
 def login():
-    target=os.path.join(UPLOAD_FOLDER,'test_docs')
+    target=os.path.join(UPLOAD_FOLDER)
     if not os.path.isdir(target):
         os.mkdir(target)
     logger.info("welcome to upload`")
-    file = request.files['file'] 
-    filename = file.filename
-    destination="/".join([target, filename])
-    file.save(destination)
-    session['uploadFilePath']=destination
-    response="Whatever you wish too return"
-    return response
+    # file = request.files['file'] 
+    # f_name = file.filename
+    # destination="/".join([target, f_name])
+    # file.save(destination)
+    # session['uploadFilePath']=destination
+    # response="Whatever you wish too return"
+    # response.headers.add('Access-Control-Allow-Origin', '*')
+    return 'bruh'
 
 if __name__ == "__main__":
     app.run(debug=True, port=5000)
