@@ -28,3 +28,11 @@ if __name__ == '__main__':
     # take a photo with volume up
     device.shell('input keyevent 24')
     print('Taken a photo!')
+    
+    """
+    To enable the ADB, your device must firstly have Developer Options unlocked and USB debugging enabled. 
+    To unlock developer options, you can go to your devices settings and scroll down to the about section and find the build number
+    of the current software which is on the device. Click the build number 7 times and Developer Options will be enabled. 
+    Then you can go to the Developer Options panel in the settings and enable USB debugging from there.
+    Now the only other thing you need is a USB cable to connect your device to your computer.
+    """
