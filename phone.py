@@ -20,9 +20,8 @@ def connect():
 if __name__ == '__main__':
     device, client = connect()
 
-    # open up camera app
-    device.shell('input keyevent 27')
-
+    # we will open the camera app ourselves
+    
     # wait 5 seconds
     time.sleep(5)
 
