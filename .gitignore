@@ -11,4 +11,4 @@
 # Built Visual Studio Code Extensions
 *.vsix
 .vscode/settings.json
-__pycache__/code.cpython-39.pyc
+*.pyc
