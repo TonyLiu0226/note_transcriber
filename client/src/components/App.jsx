@@ -48,13 +48,11 @@ class FileInput extends React.Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <Button
-          variant="contained"
+          variant="outlined"
           component="label"
         >
-          Upload File
           <input
             type="file"
-            hidden
             ref={this.fileInput}
           />
         </Button>
@@ -173,18 +171,9 @@ return (
             </Grid>
             
           </Grid>
-          <Grid item sm={12} md={6}>
-            <Typography variant="h6">Text Preview</Typography>
+          <Grid item sm={12} md={6} sx={{padding: "20px 40px"}}>
+            <Typography variant="h6" >Text Preview</Typography>
             <Typography variant="p">{imageFile}</Typography>
-            {/* <Box
-              component="img"
-              sx={{
-                height: 400,
-                width: 400
-              }}
-              alt="camer preview"
-              src="https://via.placeholder.com/400x400"
-            /> */}
           </Grid>
           
         </Grid>
@@ -225,6 +214,7 @@ return (
     </div>
   </div> */}
   </>
+
 )
 }
 /*
