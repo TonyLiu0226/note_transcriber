@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from '@mui/material';
+import { Button, Grid } from '@mui/material';
 import axios from 'axios'; 
 
 
@@ -42,16 +42,23 @@ class FileInput extends React.Component {
     render() {
       return (
         <form onSubmit={this.handleSubmit}>
-          <Button
-            variant="outlined"
-            component="label"
-          >
-            <input
-              type="file"
-              ref={this.fileInput}
-            />
-          </Button>
-          <Button sx={{ marginLeft: "20px" }} variant="contained" type="submit">Submit</Button>
+        <Grid container spacing={3}>
+          <Grid item xs={12} sm={12} md="auto">
+              <Button
+                variant="outlined"
+                component="label"
+                sx={{ height: "37px"}}
+              >
+                <input
+                  type="file"
+                  ref={this.fileInput}
+                />
+              </Button>
+            </Grid>
+            <Grid item xs={12} sm={12} md="auto">
+              <Button variant="contained" type="submit">Submit</Button>
+            </Grid>
+        </Grid>
         </form>
       );
     }

@@ -8,8 +8,8 @@ const ImageList = (props) => {
             height: 300,
             width: '100%'
         }}>
-            <Typography variant="h5" sx={{ margin:'20px'}}>Image Upload</Typography>
-            <Grid item sx={{margin:'20px 40px'}}>
+            <Typography variant="h5" sx={{ margin:'20px 25px'}}>Image Upload</Typography>
+            <Grid item sx={{margin:'20px 25px'}}>
                 <FileInput setConvertedText={props.setConvertedText}></FileInput>
             </Grid>
             {/* map the images scanned/uploaded */}
