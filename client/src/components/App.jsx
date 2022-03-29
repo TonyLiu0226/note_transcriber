@@ -1,11 +1,10 @@
 import React, { useState } from "react";
-import { Button, ButtonGroup, TextField, AppBar, Toolbar } from 'react-bootstrap';
+//import { Button, ButtonGroup, TextField, AppBar, Toolbar } from 'react-bootstrap';
 import Counter from './Counter';
 import axios from 'axios'; 
-import './Form.css';
 import { useEffect } from "react";
 import ImageList from "./ImageList";
-import { CssBaseline } from '@mui/material'
+import { CssBaseline, Grid,AppBar, Toolbar, Button, Typography, Box } from '@mui/material'
  
 class FileInput extends React.Component {
   constructor(props) {
@@ -109,7 +108,76 @@ export default function App(props) {
 return (
   <>
   <CssBaseline />
-  <ImageList />
+  <Grid container sx={{
+    flexGrow: '1',
+    display: 'flex',
+    flexDirection: 'column',
+    minHeight: '0'
+  }}>
+    <Grid item>
+    <AppBar position="static">
+        <Toolbar>
+          <Typography variant="h4" component="div" sx={{ flexGrow: 1 }}>
+            Note Transcriber 1.0
+          </Typography>
+        </Toolbar>
+      </AppBar>
+    </Grid>
+    <Grid item container sx={{
+      flexGrow: '1',
+      overflow: 'auto',
+      minHeight: '100%',
+      backgroundColor: '#f0f8ff'
+    }}>
+      <Box sx={{
+                height: 300,
+                width: '100%'
+              }}>
+        <Typography variant="h5" sx={{ marginLeft:'20px'}}>Image Preview</Typography>
+        {/* map the images scanned/uploaded */}
+      </Box>
+    </Grid>
+    <Grid item container>
+      <Grid item sm={0} xl={3} md={1}/>
+      <Grid item container sm={12} md={10} xl={6}>
+        <Grid item container>
+          <Grid item container sm={12} md={6} sx={{
+            flexGrow: '1',
+            display: 'flex',
+            flexDirection: 'column',
+            minHeight: '0',
+            justifyContent: 'center'
+          }}>
+            <Grid item sx={{margin:'20px 40px'}}>
+             <Button variant="contained" sx={{ width: '100%'}}>Flip Page</Button>
+            </Grid>
+            <Grid item sx={{margin:'0px 40px'}}>
+             <Button variant="contained" sx={{ width: '100%'}}>Take Photo</Button>
+            </Grid>
+            <Grid item sx={{margin:'20px 40px'}}>
+             <Button variant="outlined" sx={{ width: '100%'}}>Auto</Button>
+            </Grid>
+            
+          </Grid>
+          <Grid item sm={12} md={6}>
+            <Typography variant="h6">Camera Preview</Typography>
+            <Box
+              component="img"
+              sx={{
+                height: 400,
+                width: 400
+              }}
+              alt="camer preview"
+              src="https://via.placeholder.com/400x400"
+            />
+          </Grid>
+          
+        </Grid>
+      </Grid>
+      <Grid item sm={0} xl={3} md={1}/>
+    </Grid>
+  </Grid>
+  {/* <ImageList />
   <div className="auth-form">
     <div className="container">
       <h2>Actions</h2>
@@ -134,9 +202,18 @@ return (
     <div>
       <Counter></Counter>
     </div>
-  </div>
+  </div> */}
   </>
 )
 }
- 
+/*
+grid col
+  app bar
+  imagelist
+
+grid row
+  grid col
+    buttons
+  camera preview
+*/
 
