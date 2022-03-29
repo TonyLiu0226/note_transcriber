@@ -43,3 +43,8 @@ h4 {
     display: flex;
     justify-content: space-evenly;
 }
+
+.paragraph {
+    font-size: 15px;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+}

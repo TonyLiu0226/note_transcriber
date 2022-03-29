@@ -126,9 +126,15 @@ return (
       <form className="main">
         <div className="form-group">
           <button type="submit" className="btn btn-default btn-lg" id="bt">Submit</button>
-          <p>{imageFile}</p>
+          
         </div>
       </form>
+    </div>
+    <br/>
+    <div class="paragraph">
+      <h1>TEXT PREVIEW:</h1>
+      <br/>
+      <p>{imageFile}</p>
     </div>
     </div>
     <div>
