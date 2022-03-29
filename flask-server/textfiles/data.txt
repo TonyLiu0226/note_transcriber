@@ -1,0 +1,7 @@
+Actions
+
+Take Photo
+
+Flip page
+
+Submit

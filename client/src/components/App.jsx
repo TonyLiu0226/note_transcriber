@@ -7,6 +7,56 @@ import { useEffect } from "react";
 import ImageList from "./ImageList";
 import { CssBaseline } from '@mui/material'
  
+class FileInput extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.fileInput = React.createRef();
+    this.imageFile = "bruh";
+    const {UpdateImageFile} = this.props;
+    this.UpdateImageFile = UpdateImageFile;
+    this.f = this.f.bind();
+  }
+
+  f(g) {
+    console.log(g)
+  }
+
+  handleSubmit(event) {
+    event.preventDefault();
+    let file = this.fileInput.current.files[0];
+    const formData = new FormData();
+    alert(
+      `Selected file - ${this.fileInput.current.files[0].name}`
+    );
+    // put event handling code below
+    formData.append("file", file);
+    axios({
+      method: "post",
+      url: "http://127.0.0.1:5000/login",
+      data: formData,
+    })
+      .then(function (response) {
+        //handle success
+        console.log(response.data)
+        this.f(response.data);
+        // response.json().then((body) => {
+        //   console.log(response);
+        // });
+      })
+  }
+
+  render() {
+    return (
+      <form onSubmit={this.handleSubmit}>
+        <button type="submit" className="btn btn-default btn-lg">
+          Upload file:
+          <input type="file" ref={this.fileInput} />
+        </button>
+      </form>
+    );
+  }
+}
 
 export default function App(props) {
   // const [isAuto,setIsAuto] = useState(false);
@@ -15,55 +65,15 @@ export default function App(props) {
      
   //     setIsAuto(prev => !prev);
   // }
-  const [imageFile, setImageFile] = useState('');
+  const [imageFile, setImageFile] = useState('bruh');
   const [uploadInput,setUploadInput] = useState();
   const [data,setData] = useState(new FormData());
   
-  
-  class FileInput extends React.Component {
-    constructor(props) {
-      super(props);
-      this.handleSubmit = this.handleSubmit.bind(this);
-      this.fileInput = React.createRef();
-    }
-    handleSubmit(event) {
-      event.preventDefault();
-      let file = this.fileInput.current.files[0];
-      const formData = new FormData();
-      alert(
-        `Selected file - ${this.fileInput.current.files[0].name}`
-      );
-      // put event handling code below
-      formData.append("file", file);
-      axios({
-        method: "post",
-        url: "http://127.0.0.1:5000/login",
-        data: formData,
-      })
-        .then(function (response) {
-          //handle success
-          console.log(response);
-          response.json().then((body) => {
-            this.setImageFile(`http://127.0.0.1:5000/${body.file}`);
-          });
-        })
-        .catch(function (response) {
-          //handle error
-          console.err(response);
-        });
-    }
-  
-    render() {
-      return (
-        <form onSubmit={this.handleSubmit}>
-          <button type="submit" className="btn btn-default btn-lg">
-            Upload file:
-            <input type="file" ref={this.fileInput} />
-          </button>
-        </form>
-      );
-    }
+  function UpdateImageFile(bruh) {
+    setImageFile(bruh);
+
   }
+  
  
   function flipPage(e) {
     e.preventDefault();
@@ -107,7 +117,7 @@ return (
       <br></br>
       <div className= "bruh">
         <div className="form-group">
-          <FileInput></FileInput>
+          <FileInput UpdateImageFile={UpdateImageFile}></FileInput>
         </div>
       <form className="main">
         <div className="form-group">
@@ -117,7 +127,7 @@ return (
       <form className="main">
         <div className="form-group">
           <button type="submit" className="btn btn-default btn-lg" id="bt">Submit</button>
-          <img src={imageFile} alt="img" />
+          <p>{imageFile}</p>
         </div>
       </form>
     </div>

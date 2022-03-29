@@ -7,7 +7,7 @@ import pytesseract
 
 # Prints the most recent png file.
 
-folder_path = r'C:\Users\16043\Downloads'
+folder_path = r'flask-server/uploads'
 file_type = r'\*jpg'
 files = glob.glob(folder_path + file_type)
 max_file = max(files, key=os.path.getctime)
@@ -27,7 +27,7 @@ grayImage = cv2.cvtColor(originalImage, cv2.COLOR_BGR2GRAY)
 # cv2.waitKey(0)
 # cv2.destroyAllWindows()
 
-pytesseract.pytesseract.tesseract_cmd = r'C:\Users\16043\AppData\Local\Tesseract-OCR\tesseract.exe'
+pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
 text = pytesseract.image_to_string(Image.open(max_file),lang='eng')
 
 #open text file

@@ -2,12 +2,17 @@ from flask import Flask, flash, request, session
 import os.path
 from flask_cors import CORS, cross_origin
 import logging
+import glob
+from typing import Text
+import cv2
+from PIL import Image
+import pytesseract
 
 logging.basicConfig(level=logging.INFO)
 
 logger = logging.getLogger('HELLO WORLD')
 
-UPLOAD_FOLDER = '/uploads'
+UPLOAD_FOLDER = 'flask-server/uploads'
 ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 
 app = Flask(__name__)
@@ -41,9 +46,28 @@ def login():
     f_name = file.filename
     destination="/".join([target, f_name])
     file.save(destination)
+    text = generateText(f'flask-server/uploads/{f_name}')
+    logger.info(file.filename + " saved in: " +destination)
     # session['uploadFilePath']=destination #this is causing problem, idk why lmao
-    response="Whatever you wish too return"
+    response= text
     return response
+
+def generateText(max_file):
+    print(max_file)
+    pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
+    text = pytesseract.image_to_string(Image.open(max_file),lang='eng')
+
+    #open text file
+    text_file = open("flask-server/textfiles/data.txt", "w")
+ 
+    #write string to file
+    text_file.write(text)
+ 
+    #close file
+    text_file.close()
+
+    return(text)
+
 
 if __name__ == "__main__":
     app.run(debug=True, port=5000)
