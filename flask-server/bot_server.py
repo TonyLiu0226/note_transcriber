@@ -37,14 +37,13 @@ def login():
     if not os.path.isdir(target):
         os.mkdir(target)
     logger.info("welcome to upload`")
-    # file = request.files['file'] 
-    # f_name = file.filename
-    # destination="/".join([target, f_name])
-    # file.save(destination)
-    # session['uploadFilePath']=destination
-    # response="Whatever you wish too return"
-    # response.headers.add('Access-Control-Allow-Origin', '*')
-    return 'bruh'
+    file = request.files['file'] 
+    f_name = file.filename
+    destination="/".join([target, f_name])
+    file.save(destination)
+    # session['uploadFilePath']=destination #this is causing problem, idk why lmao
+    response="Whatever you wish too return"
+    return response
 
 if __name__ == "__main__":
     app.run(debug=True, port=5000)
