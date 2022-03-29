@@ -15,7 +15,6 @@ class FileInput extends React.Component {
     this.imageFile = "bruh";
     const {UpdateImageFile} = this.props;
     this.UpdateImageFile = UpdateImageFile;
-    this.f = this.f.bind();
   }
 
   f(g) {
@@ -36,10 +35,10 @@ class FileInput extends React.Component {
       url: "http://127.0.0.1:5000/login",
       data: formData,
     })
-      .then(function (response) {
+      .then((response) => {
         //handle success
         console.log(response.data)
-        this.f(response.data);
+        this.UpdateImageFile(response.data);
         // response.json().then((body) => {
         //   console.log(response);
         // });
