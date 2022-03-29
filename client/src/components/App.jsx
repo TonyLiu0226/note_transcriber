@@ -4,7 +4,7 @@ import Counter from './Counter';
 import axios from 'axios'; 
 import { useEffect } from "react";
 import ImageList from "./ImageList";
-import { CssBaseline, Grid,AppBar, Toolbar, Button, Typography, Box } from '@mui/material'
+import { CssBaseline, Grid,AppBar, Toolbar, Button, Typography, Box, InputField } from '@mui/material'
  
 class FileInput extends React.Component {
   constructor(props) {
@@ -47,10 +47,18 @@ class FileInput extends React.Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <button type="submit" className="btn btn-default btn-lg">
-          Upload file:
-          <input type="file" ref={this.fileInput} />
-        </button>
+        <Button
+          variant="contained"
+          component="label"
+        >
+          Upload File
+          <input
+            type="file"
+            hidden
+            ref={this.fileInput}
+          />
+        </Button>
+        <Button sx={{ marginLeft: "20px" }} variant="contained" type="submit">Submit</Button>
       </form>
     );
   }
@@ -133,7 +141,10 @@ return (
                 height: 300,
                 width: '100%'
               }}>
-        <Typography variant="h5" sx={{ marginLeft:'20px'}}>Image Preview</Typography>
+        <Typography variant="h5" sx={{ margin:'20px'}}>Image Upload</Typography>
+        <Grid item sx={{margin:'20px 40px'}}>
+             <FileInput UpdateImageFile={UpdateImageFile}></FileInput>
+        </Grid>
         {/* map the images scanned/uploaded */}
       </Box>
     </Grid>
@@ -149,7 +160,7 @@ return (
             justifyContent: 'center'
           }}>
             <Grid item sx={{margin:'20px 40px'}}>
-             <Button variant="contained" sx={{ width: '100%'}}>Flip Page</Button>
+             <Button variant="contained" sx={{ width: '100%'}} onClick={flipPage}>Flip Page</Button>
             </Grid>
             <Grid item sx={{margin:'0px 40px'}}>
              <Button variant="contained" sx={{ width: '100%'}}>Take Photo</Button>
@@ -157,11 +168,15 @@ return (
             <Grid item sx={{margin:'20px 40px'}}>
              <Button variant="outlined" sx={{ width: '100%'}}>Auto</Button>
             </Grid>
+            <Grid item sx={{margin:'0px 40px'}}>
+             <Button variant="contained" sx={{ width: '100%'}}>Convert</Button>
+            </Grid>
             
           </Grid>
           <Grid item sm={12} md={6}>
-            <Typography variant="h6">Camera Preview</Typography>
-            <Box
+            <Typography variant="h6">Text Preview</Typography>
+            <Typography variant="p">{imageFile}</Typography>
+            {/* <Box
               component="img"
               sx={{
                 height: 400,
@@ -169,7 +184,7 @@ return (
               }}
               alt="camer preview"
               src="https://via.placeholder.com/400x400"
-            />
+            /> */}
           </Grid>
           
         </Grid>
