@@ -7,6 +7,9 @@ from typing import Text
 import cv2
 from PIL import Image
 import pytesseract
+from ppadb.client import Client as AdbClient
+import time
+
 
 logging.basicConfig(level=logging.INFO)
 
@@ -14,6 +17,7 @@ logger = logging.getLogger('HELLO WORLD')
 
 UPLOAD_FOLDER = 'flask-server/uploads'
 ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
+PHONE_PATH = r'C:\uploadFiles'
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
@@ -48,8 +52,13 @@ def login():
     file.save(destination)
     text = generateText(f'flask-server/uploads/{f_name}')
     logger.info(file.filename + " saved in: " +destination)
-    # session['uploadFilePath']=destination #this is causing problem, idk why lmao
     response= text
+    return response
+
+@app.route('/take_photo', methods=['GET'])
+def take_photo():
+    takeAPhoto()
+    response="yo"
     return response
 
 def generateText(max_file):
@@ -67,6 +76,38 @@ def generateText(max_file):
     text_file.close()
 
     return(text)
+
+
+def connect():
+    client = AdbClient(host="127.0.0.1", port=5037) # Default is "127.0.0.1" and 5037
+
+    devices = client.devices()
+
+    if len(devices) == 0:
+        print('No devices')
+        quit()
+
+    device = devices[0]
+
+    print(f'Connected to {device}')
+
+    return device, client
+
+def takeAPhoto():
+    # we will open the camera app ourselves
+    device, client = connect()
+    # wait 5 seconds
+    time.sleep(5)
+
+    # take a photo with volume up
+    device.shell('input keyevent 24')
+    print('Taken a photo!')
+
+    #copies the photo to the screen
+    #device.shell("screencap -p /sdcard/DCIM/Camera/IMG_20220330_000154.jpg")
+    filename = device.shell('cd /sdcard/DCIM/Camera && ls -t | head -1 | xargs rm -f')
+    print(filename)
+    device.pull("/sdcard/DCIM/Camera/IMG_20220330_001633.jpg", "flask-server/uploads/screen.png")
 
 
 if __name__ == "__main__":

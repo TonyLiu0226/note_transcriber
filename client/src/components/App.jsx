@@ -78,6 +78,14 @@ export default function App(props) {
 
   }
   
+  function takePhoto(e) {
+    e.preventDefault();
+    axios
+      .get('http://127.0.0.1:5000/take_photo')
+      .then(response => {
+          console.log(response.data);
+      });
+  }
  
   function flipPage(e) {
     e.preventDefault();
@@ -161,7 +169,7 @@ return (
              <Button variant="contained" sx={{ width: '100%'}} onClick={flipPage}>Flip Page</Button>
             </Grid>
             <Grid item sx={{margin:'0px 40px'}}>
-             <Button variant="contained" sx={{ width: '100%'}}>Take Photo</Button>
+             <Button variant="contained" sx={{ width: '100%'}} onClick={takePhoto}>Take Photo</Button>
             </Grid>
             <Grid item sx={{margin:'20px 40px'}}>
              <Button variant="outlined" sx={{ width: '100%'}}>Auto</Button>
