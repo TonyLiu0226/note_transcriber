@@ -4,6 +4,7 @@ from typing import Text
 import cv2
 from PIL import Image
 import pytesseract
+from autocorrect import Speller
 
 # Prints the most recent png file.
 
@@ -29,6 +30,9 @@ grayImage = cv2.cvtColor(originalImage, cv2.COLOR_BGR2GRAY)
 
 pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
 text = pytesseract.image_to_string(Image.open(max_file),lang='eng')
+
+spell = Speller()
+text =  spell(text)
 
 #open text file
 text_file = open("D:/data.txt", "w")
