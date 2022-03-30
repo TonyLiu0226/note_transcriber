@@ -104,10 +104,19 @@ def takeAPhoto():
     print('Taken a photo!')
 
     #copies the photo to the screen
-    #device.shell("screencap -p /sdcard/DCIM/Camera/IMG_20220330_000154.jpg")
-    filename = device.shell('cd /sdcard/DCIM/Camera && ls -t | head -1 | xargs rm -f')
-    print(filename)
-    device.pull("/sdcard/DCIM/Camera/IMG_20220330_001633.jpg", "flask-server/uploads/screen.png")
+
+    #waits 3 seconds so we can retrieve the newly taken photo
+    time.sleep(3)
+    device.shell('input keyevent 24')
+    #for some reason it will not allow me to upload the most recent file. To go around this, I take a 2nd photo here
+    #Then, the original photo will be the 2nd most recent photo, and I can use it to send to screen.png
+
+    #retrieves the photo and uploads it
+    filename = device.shell('ls -t /sdcard/DCIM/Camera/')
+    txt = filename.split()
+    path = (f"/sdcard/DCIM/Camera/{txt[1]}")
+    print(path)
+    device.pull("/sdcard/DCIM/Camera/" + txt[1], "flask-server/uploads/screen.png")
 
 
 if __name__ == "__main__":
