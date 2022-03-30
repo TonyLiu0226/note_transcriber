@@ -1,32 +1,19 @@
 import React from "react";
-import {Container, Grid, Paper, Card, CardMedia, CssBaseline, Box} from '@mui/material'
-import { styled } from '@mui/material/styles';
-import testImage from '../images/thc212nt.png'
+import {Grid, Box, Typography} from '@mui/material'
+import FileInput from "./FileInput";
 
-const ImageList = () => {
+const ImageList = (props) => {
     return (
-        <>
-            <CssBaseline />
-            <Box sx={{
-                backgroundColor: 'blue'
-            }}>
-            <Container maxWidth='xl' sx={{ backgroundColor:'red'}}>
-                <Grid container spacing={2} justify="left">
-                    <Grid item xs={1}>
-                        <Card>
-                            <CardMedia
-                                component="img"
-                                height="200"
-                                image={testImage}
-                                alt="test">
-                            </CardMedia>
-                        </Card>
-                    </Grid>
-                </Grid>
-            </Container>
-            </Box>
-            
-        </>
+        <Box sx={{
+            height: 300,
+            width: '100%'
+        }}>
+            <Typography variant="h5" sx={{ margin:'20px 25px'}}>Image Upload</Typography>
+            <Grid item sx={{margin:'20px 25px'}}>
+                <FileInput setConvertedText={props.setConvertedText}></FileInput>
+            </Grid>
+            {/* map the images scanned/uploaded */}
+        </Box>
     )
 }
 
