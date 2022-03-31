@@ -14,6 +14,7 @@ export default function App(props) {
       .get('http://127.0.0.1:5000/take_photo')
       .then(response => {
           console.log(response.data);
+          setConvertedText(response.data);
       });
   }
  

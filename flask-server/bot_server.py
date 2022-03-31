@@ -29,12 +29,14 @@ app.config['CORS_HEADERS'] = 'Content-Type'
 @app.route('/')
 def hello():
     return "go to /turnpage to turn page"
+
+
 @app.route('/turnpage')
 def run_script():
-    file_exists = os.path.isfile('/Volumes/CIRCUITPY/code.py')
+    file_exists = os.path.isfile('D:/code.py')
 
     if file_exists:
-        file = open(r'/Volumes/CIRCUITPY/code.py', 'a')
+        file = open(r'D:/code.py', 'a')
         file.write(' ')
         file.close()
     return "turning page..."
@@ -57,8 +59,7 @@ def login():
 
 @app.route('/take_photo', methods=['GET'])
 def take_photo():
-    takeAPhoto()
-    response="yo"
+    response = takeAPhoto()
     return response
 
 def generateText(max_file):
@@ -96,8 +97,8 @@ def connect():
 def takeAPhoto():
     # we will open the camera app ourselves
     device, client = connect()
-    # wait 5 seconds
-    time.sleep(5)
+    # wait 2 seconds
+    time.sleep(2)
 
     # take a photo with volume up
     device.shell('input keyevent 24')
@@ -105,8 +106,8 @@ def takeAPhoto():
 
     #copies the photo to the screen
 
-    #waits 3 seconds so we can retrieve the newly taken photo
-    time.sleep(3)
+    #waits 2 seconds so we can retrieve the newly taken photo
+    time.sleep(2)
     device.shell('input keyevent 24')
     #for some reason it will not allow me to upload the most recent file. To go around this, I take a 2nd photo here
     #Then, the original photo will be the 2nd most recent photo, and I can use it to send to screen.png
@@ -116,7 +117,9 @@ def takeAPhoto():
     txt = filename.split()
     path = (f"/sdcard/DCIM/Camera/{txt[1]}")
     print(path)
-    device.pull("/sdcard/DCIM/Camera/" + txt[1], "flask-server/uploads/screen.png")
+    device.pull("/sdcard/DCIM/Camera/" + txt[1], "flask-server/uploads/screen.jpg")
+    text = generateText(f'flask-server/uploads/screen.jpg')
+    return text
 
 
 if __name__ == "__main__":
