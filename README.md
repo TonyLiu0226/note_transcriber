@@ -14,6 +14,7 @@ website the web app is hosted on, so long as you follow these simple installatio
 - A tripod, or other suitable structure that can support the android device when taking photos
 
 **Setting up the page turning device**
+
 Once you build the page turning device as per this picture below (insert below), you will need to set up circuitpython on your machine. Please follow this link to do so
 https://learn.adafruit.com/welcome-to-circuitpython/installing-circuitpython
 
@@ -28,6 +29,7 @@ You will need to go to your circuitpython drive and locate your code.py file, th
 the default path should work, but do the above step just to be sure
 
 **Setting up adb to take photos**
+
 Install ADB tool by following this link
 https://developer.android.com/studio/command-line/adb
 
