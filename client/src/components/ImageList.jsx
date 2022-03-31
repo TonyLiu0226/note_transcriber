@@ -5,7 +5,7 @@ import FileInput from "./FileInput";
 const ImageList = (props) => {
     return (
         <Box sx={{
-            height: 300,
+            height: 200,
             width: '100%'
         }}>
             <Typography variant="h5" sx={{ margin:'20px 25px'}}>Image Upload</Typography>

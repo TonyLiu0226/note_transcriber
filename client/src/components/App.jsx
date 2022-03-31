@@ -49,12 +49,11 @@ export default function App(props) {
       <Grid item sm={0} xl={3} lg={1}/>
       <Grid item container sm={12} lg={10} xl={6}>
         <Grid item container>
-          <Grid item container sm={12} lg={6} spacing={3} sx={{
+          <Grid item container sm={12} lg={4} spacing={3} sx={{
             flexGrow: '1',
             display: 'flex',
             flexDirection: 'column',
             minHeight: '0',
-            justifyContent: 'center',
             padding: '20px'
           }}>
             <Grid item>
@@ -63,14 +62,8 @@ export default function App(props) {
             <Grid item>
              <Button variant="contained" sx={{ width: '100%'}} onClick={takePhoto}>Take Photo</Button>
             </Grid>
-            <Grid item>
-             <Button variant="outlined" sx={{ width: '100%'}}>Auto</Button>
-            </Grid>
-            <Grid item>
-             <Button variant="contained" sx={{ width: '100%'}}>Convert</Button>
-            </Grid>
           </Grid>
-          <Grid item sm={12} lg={6} sx={{padding: "20px 40px"}}>
+          <Grid item sm={12} lg={8} sx={{padding: "20px 40px"}}>
             <Typography variant="h6" >Text Preview</Typography>
             <Typography variant="p">{convertedText}</Typography>
           </Grid>
