@@ -17,7 +17,6 @@ logger = logging.getLogger('HELLO WORLD')
 
 UPLOAD_FOLDER = 'flask-server/uploads'
 ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
-PHONE_PATH = r'C:\uploadFiles'
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
@@ -33,10 +32,10 @@ def hello():
 
 @app.route('/turnpage')
 def run_script():
-    file_exists = os.path.isfile('D:/code.py')
+    file_exists = os.path.isfile('D:/code.py') #PLEASE CHANGE TO CORRECT FILE PATH OF YOUR CIRCUITPYTHON CODE
 
     if file_exists:
-        file = open(r'D:/code.py', 'a')
+        file = open(r'D:/code.py', 'a') #PLEASE CHANGE TO CORRECT FILE PATH OF YOUR CIRCUITPYTHON CODE
         file.write(' ')
         file.close()
     return "turning page..."
@@ -64,7 +63,7 @@ def take_photo():
 
 def generateText(max_file):
     print(max_file)
-    pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
+    pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe' #CHANGE TO WHERE YOU INSTALLED TESSERACT-OCR
     text = pytesseract.image_to_string(Image.open(max_file),lang='eng')
 
     #open text file
