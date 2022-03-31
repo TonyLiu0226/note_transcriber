@@ -42,3 +42,6 @@ Then if prompted for use "USB connection to:", select "Transfer Photos". When a 
 Then, open up a terminal window or the command prompt, and navigate to the directory where you installed the ADB tool. Lastly run adb devices, and ensure your device is listed.
 
 This will start the ADB client, which will allow the python code for taking photos in bot_server.py to work.
+
+**FINALLY**
+Run bot_server.py. This will start the backend server. Without running this code, the buttons to flip page or take photo will not work properly.
