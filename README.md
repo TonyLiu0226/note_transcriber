@@ -43,5 +43,11 @@ Then, open up a terminal window or the command prompt, and navigate to the direc
 
 This will start the ADB client, which will allow the python code for taking photos in bot_server.py to work.
 
+**MACHINE LEARNING**
+
+Please install Tesseract-OCR from this link below. Make sure to copy the path where you installed the folder, as you will need to change line 66 of bot_server.py to
+this location, as indicated in the code.
+https://digi.bib.uni-mannheim.de/tesseract/
+
 **FINALLY**
 Run bot_server.py. This will start the backend server. Without running this code, the buttons to flip page or take photo will not work properly.
