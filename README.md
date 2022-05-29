@@ -1,4 +1,4 @@
-**Tasin Hasan's CPEN 212 Note Transcriber**
+**Tahsin Hasan's CPEN 212 Note Transcriber**
 
 This is a simple device that takes your handwritten notes and transcribes them to text on screen. It is very useful if you need to back up your notes onto the computer,
 or if you want your notes to look nicer. The device can be directly controlled from the web app, meaning you can back up your notes onto any machine just by accessing the
